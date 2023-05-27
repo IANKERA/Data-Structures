@@ -27,45 +27,43 @@ const restaurant = {
     },
   },
 
-    order: function (starterIndex, mainIndex) {
-      return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-
-    },
-    orderDelivery: function({starterIndex, mainIndex, time, address}) {
-      console.log(`Order recieved! ${this.starterMenu[starterIndex]} and 
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+    console.log(`Order recieved! ${this.starterMenu[starterIndex]} and 
       ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
-    },
+  },
 
-   orderPasta: function (int1, int2 ,int3) {
-      console.log(`here is yur pasta ${int1} with ${int2} , ${int3}`);
-
-   },
+  orderPasta: function (int1, int2, int3) {
+    console.log(`here is yur pasta ${int1} with ${int2} , ${int3}`);
+  },
 };
 
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Via del Sole, 21',
   mainIndex: 2,
-  starterIndex:2,
-
+  starterIndex: 2,
 });
 
- 
-const{name, openingHours, categories} = restaurant;
-  console.log(name, openingHours, categories);
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
 
 const {
-  name : restaurantName, 
-  openingHours: hours, 
-  categories: tags,}
-   = restaurant;
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
 
 console.log(restaurantName, hours, tags);
 
- ({sat: { open, close}} = openingHours);
+({
+  sat: { open, close },
+} = openingHours);
 console.log(open, close);
 
-const menu = [...restaurant.mainMenu,...restaurant.starterMenu];
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 console.log(menu);
 
 // const ingredients = [prompt('letss make a pasta ingredien 1'), prompt('ingredient 2')
@@ -74,9 +72,30 @@ console.log(menu);
 // console.log(ingredients)
 // restaurant.orderPasta(...ingredients);
 
-const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe'};
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
 console.log(newRestaurant);
 
-const restaurantCopy = {...restaurant};
-restaurantCopy.name =   'Kostas kamposis';
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Kostas kamposis';
 console.log(restaurantCopy.name);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+
+add(2, 3, 4);
+
+restaurant.guest = 100;
+
+const guest = restaurant.guest || 10;
+console.log(guest);
