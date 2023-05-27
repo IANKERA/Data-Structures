@@ -163,3 +163,4 @@ const printGoals = function (...players) {
 printGoals(...game.scored);
 
 team1 < team2 && console.log(team1);
+team2 < team1 && console.log(team2);
